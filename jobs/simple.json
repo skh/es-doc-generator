@@ -15,7 +15,7 @@
         "end": 2 
       }
     },
-    "ZONES": {
+    "ZONE": {
       "type": "list",
       "params": {
         "values": [
@@ -25,5 +25,10 @@
         ]
       }
     }
+  },
+  "template": {
+    "@timestamp": "##TIMESTAMP##",
+    "hostname": "testhost-##HOSTNAME_COUNTER##",
+    "availability_zone": "##ZONE##"
   }
 }

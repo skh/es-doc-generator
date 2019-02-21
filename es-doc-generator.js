@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const Combinator = require('./lib/combinator');
+const Template = require('./lib/template');
 
 const myArgs = process.argv.slice(2);
 
@@ -24,8 +25,9 @@ try {
 }
 
 const C = new Combinator(job.variables);
+const T = new Template(job.template);
 while (true) {
-  console.log(C.getCurrent());
+  console.log(T.fill(C.getCurrent()));
   if (C.hasNext()) {
     C.next();
   } else {
