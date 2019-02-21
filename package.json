@@ -1,0 +1,25 @@
+{
+  "name": "es-doc-generator",
+  "version": "1.0.0",
+  "description": "Generate many elasticsearch documents at once",
+  "main": "es-doc-generator.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skh/es-doc-generator.git"
+  },
+  "author": "Sonja Krause-Harder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skh/es-doc-generator/issues"
+  },
+  "homepage": "https://github.com/skh/es-doc-generator#readme",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
+}

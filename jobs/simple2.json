@@ -1,0 +1,25 @@
+{
+  "variables": {
+    "T": {
+      "type": "timestamp",
+      "params": {
+        "start": "2019-02-04T22:40:30.652Z",
+        "end": "2019-02-04T22:41:31.652Z",
+        "interval": "60000"
+      }
+    },
+    "A": {
+      "type": "counter",
+      "params": {
+        "start": 0,
+        "end": 1
+      }
+    },
+    "L": {
+      "type": "list",
+      "params": {
+        "values": ["a", "b"]
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "variables": {
+    "TIMESTAMP": {
+      "type": "timestamp",
+      "params": {
+        "start": "2019-02-04T22:40:30.652Z",
+        "end": "2019-02-04T22:42:31.652Z",
+        "interval": "60000"
+      }
+    },
+    "HOSTNAME_COUNTER": {
+      "type": "counter",
+      "params": {
+        "start": 1,
+        "end": 2 
+      }
+    },
+    "ZONES": {
+      "type": "list",
+      "params": {
+        "values": [
+          "projects/513326162531/zones/europe-west1-c",
+          "projects/513326162531/zones/us-east1",
+          "projects/513326162531/zones/asia-southeast1"
+        ]
+      }
+    }
+  }
+}
