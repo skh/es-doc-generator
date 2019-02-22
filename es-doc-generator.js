@@ -29,8 +29,29 @@ try {
 
 const C = new Combinator(job.variables);
 const T = new Template(job.template);
+const client = new elasticsearch.Client({
+  host: config.host,
+  httpAuth: `${config.user}:${config.password}`
+});
+
+client.ping({
+  requestTimeout: 30000,
+}, function(error) {
+  if (error) {
+      console.error('elasticsearch cluster is down!');
+  } else {
+      console.log('Everything is ok');
+  }
+});
+
 while (true) {
-  console.log(T.fill(C.getCurrent()));
+  client.index({
+    index: config.index,
+    type: '_doc',
+    body: T.fill(C.getCurrent())
+}, function(err, resp, status) {
+    console.log(err, resp, status);
+});
   if (C.hasNext()) {
     C.next();
   } else {
@@ -38,7 +59,3 @@ while (true) {
   }
 }
 
-var client = new elasticsearch.Client({
-   host: config.host,
-   httpAuth: `${config.user}:${config.password}`
-});
