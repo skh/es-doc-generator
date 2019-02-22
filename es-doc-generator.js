@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const elasticsearch = require('elasticsearch');
+
 const Combinator = require('./lib/combinator');
 const Template = require('./lib/template');
 
@@ -16,10 +18,11 @@ if (myArgs.length !== 1) {
   die('Please provide a path to a job file as argument.');
 }
 
-let job;
+let job, config;
 
 try {
   job = JSON.parse(fs.readFileSync(myArgs[0]));
+  config = JSON.parse(fs.readFileSync('./config.json'));
 } catch(error) {
   die(`An error occured: ${error}`);
 }
@@ -34,3 +37,8 @@ while (true) {
     break;
   }
 }
+
+var client = new elasticsearch.Client({
+   host: config.host,
+   httpAuth: `${config.user}:${config.password}`
+});
