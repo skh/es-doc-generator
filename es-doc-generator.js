@@ -3,6 +3,9 @@
 const fs = require('fs');
 const elasticsearch = require('elasticsearch');
 
+// beautifull spinner
+const ora = require('ora');
+
 const Combinator = require('./lib/combinator');
 const Template = require('./lib/template');
 
@@ -12,6 +15,10 @@ const die = (message = "An error occured.") => {
   console.log(`${message}\n`);
   console.log("Usage: node es-doc-generator JOBFILE");
   process.exit(1);
+}
+
+const sleep = (millis) => {
+  return new Promise(resolve => setTimeout(resolve, millis));
 }
 
 if (myArgs.length !== 1) {
@@ -28,34 +35,42 @@ try {
 }
 
 const C = new Combinator(job.variables);
-const T = new Template(job.template);
+const T = new Template(job.templates);
 const client = new elasticsearch.Client({
   host: config.host,
   httpAuth: `${config.user}:${config.password}`
 });
 
-client.ping({
-  requestTimeout: 30000,
-}, function(error) {
-  if (error) {
-      console.error('elasticsearch cluster is down!');
-  } else {
-      console.log('Everything is ok');
-  }
-});
+//const spinner = ora('Sending data').start();
+let i = 1;
 
-while (true) {
-  client.index({
-    index: config.index,
-    type: '_doc',
-    body: T.fill(C.getCurrent())
-}, function(err, resp, status) {
-    console.log(err, resp, status);
-});
-  if (C.hasNext()) {
-    C.next();
-  } else {
-    break;
+const send = async (C, T, client, index) => {
+  while (true) {
+    console.log(`Sending document set ${i}`);
+    const docs = T.fill(C.getCurrent());
+    docs.forEach(doc => {
+      client.index({
+        index: index,
+        type: 'doc',
+        body: doc
+      }, function(err, resp, status) {
+        if (err) {
+          console.log(err, resp, status);
+        }
+      });
+    });
+    if (C.hasNext()) {
+      i += 1;
+      C.next();
+      await new Promise(done => setTimeout(done, 500));
+    } else {
+      break;
+    }
   }
 }
+
+send(C, T, client, job.index);
+
+
+//spinner.stop();
 

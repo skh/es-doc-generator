@@ -1,5 +1,4 @@
 {
-  "index": INDEX,
   "host":ELASTICSEARCH_URL,
   "user": USER,
   "password": PASSWORD
