@@ -3,9 +3,6 @@
 const fs = require('fs');
 const elasticsearch = require('elasticsearch');
 
-// beautifull spinner
-const ora = require('ora');
-
 const Combinator = require('./lib/combinator');
 const Template = require('./lib/template');
 
@@ -41,7 +38,6 @@ const client = new elasticsearch.Client({
   httpAuth: `${config.user}:${config.password}`
 });
 
-//const spinner = ora('Sending data').start();
 let i = 1;
 
 const send = async (C, T, client, index) => {
@@ -70,7 +66,3 @@ const send = async (C, T, client, index) => {
 }
 
 send(C, T, client, job.index);
-
-
-//spinner.stop();
-
