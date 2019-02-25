@@ -4,9 +4,9 @@
     "TIMESTAMP": {
       "type": "timestamp",
       "params": {
-        "start": "2019-02-25T00:01:00.652Z",
-        "end": "2019-02-25T00:59:00.652Z",
-        "interval": "60"
+        "start": "2019-02-25T15:01:00.652Z",
+        "end": "2019-02-25T15:59:00.652Z",
+        "interval": "10"
       }
     },
     "HOST_COUNTER": {

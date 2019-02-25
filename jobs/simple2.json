@@ -22,5 +22,12 @@
         "values": ["a", "b"]
       }
     }
-  }
+  },
+  "templates": [
+    {
+      "@timestamp": "##T##",
+      "mycounter": "foo-##A##",
+      "mylist": "##L##"
+    }
+  ]
 }

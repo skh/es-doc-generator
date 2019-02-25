@@ -27,9 +27,11 @@
       }
     }
   },
-  "template": {
-    "@timestamp": "##TIMESTAMP##",
-    "hostname": "testhost-##HOSTNAME_COUNTER##",
-    "availability_zone": "##ZONE##"
-  }
+  "templates": [
+    {
+      "@timestamp": "##TIMESTAMP##",
+      "hostname": "testhost-##HOSTNAME_COUNTER##",
+      "availability_zone": "##ZONE##"
+    }
+  ]
 }
