@@ -6,7 +6,7 @@
       "params": {
         "start": "2019-02-04T22:40:30.652Z",
         "end": "2019-02-04T22:42:31.652Z",
-        "interval": "60000"
+        "interval": "60"
       }
     },
     "HOSTNAME_COUNTER": {
