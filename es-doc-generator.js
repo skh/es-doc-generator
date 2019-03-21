@@ -47,7 +47,7 @@ const send = async (C, T, client, index) => {
     docs.forEach(doc => {
       client.index({
         index: index,
-        type: 'doc',
+        type: '_doc',
         body: doc
       }, function(err, resp, status) {
         if (err) {

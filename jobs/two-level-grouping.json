@@ -1,0 +1,298 @@
+{
+  "index": "metricbeat-8.0.0-2019.03.21",
+  "variables": {
+    "TIMESTAMP": {
+      "type": "timestamp",
+      "params": {
+        "start": "2019-03-21T16:38:00.652Z",
+        "end": "2019-03-21T16:51:00.652Z",
+        "interval": "60"
+      }
+    },
+    "REGION_COUNTER": {
+      "type": "counter",
+      "params": {
+        "start": 1,
+        "end": 10 
+      }
+    },
+    "HOST_COUNTER": {
+      "type": "counter",
+      "params": {
+        "start": 1,
+        "end": 2
+      }
+    },
+    "MACHINE_TYPE": {
+      "type": "list",
+      "params": {
+        "values": [
+          "t2.blue",
+          "t2.red",
+          "t2.green",
+          "t2.yellow",
+          "t2.magenta",
+          "t2.cyan",
+          "t2.black"
+        ]
+      }
+    }
+  },
+  "templates": [
+    {
+      "@timestamp": "##TIMESTAMP##",
+      "cloud": {
+        "instance": {
+          "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+          "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##"
+        },
+        "machine": {
+          "type": "##MACHINE_TYPE##"
+        },
+        "region": "region-##REGION_COUNTER##"
+      },
+      "event": {
+        "dataset": "system.cpu",
+        "duration": 849871
+      },
+      "system": {
+        "cpu": {
+          "steal": {
+            "pct": 0
+          },
+          "irq": {
+            "pct": 0
+          },
+          "iowait": {
+            "pct": 0.0051
+          },
+          "user": {
+            "pct": 0.7467
+          },
+          "softirq": {
+            "pct": 0.0183
+          },
+          "total": {
+            "pct": 1.0417
+          },
+          "cores": 8,
+          "idle": {
+            "pct": 6.9532
+          },
+          "system": {
+            "pct": 0.2726
+          },
+          "nice": {
+            "pct": 0.0041
+          }
+        }
+      },
+      "beat": {
+        "name": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "hostname": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "version": "8.0.0"
+      },
+      "host": {
+        "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "architecture": "x86_64",
+        "os": {
+          "version": "18.04.2 LTS (Bionic Beaver)",
+          "family": "debian",
+          "name": "Ubuntu",
+          "codename": "bionic",
+          "platform": "ubuntu"
+        },
+        "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "containerized": false
+      },
+      "metricset": {
+        "name": "cpu",
+        "module": "system",
+        "rtt": 849
+      }
+    },{
+      "@timestamp": "##TIMESTAMP##",
+      "cloud": {
+        "instance": {
+          "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+          "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##"
+        },
+        "machine": {
+          "type": "##MACHINE_TYPE##"
+        },
+        "region": "region-##REGION_COUNTER##"
+      },
+      "beat": {
+        "name": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "hostname": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "version": "8.0.0"
+      },
+      "host": {
+        "os": {
+          "codename": "bionic",
+          "platform": "ubuntu",
+          "version": "18.04.2 LTS (Bionic Beaver)",
+          "family": "debian",
+          "name": "Ubuntu"
+        },
+        "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "containerized": false,
+        "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "architecture": "x86_64"
+      },
+      "event": {
+        "dataset": "system.load",
+        "duration": 242767
+      },
+      "metricset": {
+        "name": "load",
+        "module": "system",
+        "rtt": 242
+      },
+      "system": {
+        "load": {
+          "1": 1.1,
+          "5": 0.95,
+          "15": 0.94,
+          "norm": {
+            "1": 0.1375,
+            "5": 0.1188,
+            "15": 0.1175
+          },
+          "cores": 8
+        }
+      }
+    },{
+      "@timestamp": "##TIMESTAMP##",
+      "cloud": {
+        "instance": {
+          "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+          "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##"
+        },
+        "machine": {
+          "type": "##MACHINE_TYPE##"
+        },
+        "region": "region-##REGION_COUNTER##"
+      },
+      "system": {
+        "memory": {
+          "actual": {
+            "free": 1406717952,
+            "used": {
+              "pct": 0.9151,
+              "bytes": 15168806912
+            }
+          },
+          "swap": {
+            "total": 1027600384,
+            "used": {
+              "pct": 1,
+              "bytes": 1027600384
+            },
+            "free": 0
+          },
+          "hugepages": {
+            "default_size": 2097152,
+            "total": 0,
+            "used": {
+              "bytes": 0,
+              "pct": 0
+            },
+            "free": 0,
+            "reserved": 0,
+            "surplus": 0
+          },
+          "total": 16575524864,
+          "used": {
+            "bytes": 16377819136,
+            "pct": 0.9881
+          },
+          "free": 197705728
+        }
+      },
+      "metricset": {
+        "rtt": 838,
+        "name": "memory",
+        "module": "system"
+      },
+      "beat": {
+        "version": "8.0.0",
+        "name": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "hostname": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##"
+      },
+      "host": {
+        "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "containerized": false,
+        "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "architecture": "x86_64",
+        "os": {
+          "version": "18.04.2 LTS (Bionic Beaver)",
+          "family": "debian",
+          "name": "Ubuntu",
+          "codename": "bionic",
+          "platform": "ubuntu"
+        }
+      },
+      "event": {
+        "dataset": "system.memory",
+        "duration": 838910
+      }
+    },{
+      "@timestamp": "##TIMESTAMP##",
+      "cloud": {
+        "instance": {
+          "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+          "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##"
+        },
+        "machine": {
+          "type": "##MACHINE_TYPE##"
+        },
+        "region": "region-##REGION_COUNTER##"
+      },
+      "event": {
+        "duration": 133243,
+        "dataset": "system.network"
+      },
+      "system": {
+        "network": {
+          "name": "lo",
+          "in": {
+            "bytes": 6720833026,
+            "packets": 8233939,
+            "errors": 0,
+            "dropped": 0
+          },
+          "out": {
+            "dropped": 0,
+            "packets": 8233939,
+            "bytes": 6720833026,
+            "errors": 0
+          }
+        }
+      },
+      "beat": {
+        "hostname": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "version": "8.0.0",
+        "name": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##"
+      },
+      "host": {
+        "os": {
+          "version": "18.04.2 LTS (Bionic Beaver)",
+          "family": "debian",
+          "name": "Ubuntu",
+          "codename": "bionic",
+          "platform": "ubuntu"
+        },
+        "id": "region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "containerized": false,
+        "name": "host-region-##REGION_COUNTER##-##MACHINE_TYPE##-##HOST_COUNTER##",
+        "architecture": "x86_64"
+      },
+      "metricset": {
+        "name": "network",
+        "module": "system",
+        "rtt": 133
+      }
+    }
+  ]
+}
